@@ -1,0 +1,2 @@
+/*! Polyfill from MDN */
+Array.prototype.includes||(Array.prototype.includes=function(r){"use strict";if(null==this)throw new TypeError("Array.prototype.includes called on null or undefined");var e=Object(this),t=parseInt(e.length,10)||0;if(0===t)return!1;var n,o,i=parseInt(arguments[1],10)||0;for(0<=i?n=i:(n=t+i)<0&&(n=0);n<t;){if(r===(o=e[n])||r!=r&&o!=o)return!0;n++}return!1});

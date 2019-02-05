@@ -1,0 +1,89 @@
+# Symfony
+/phpunit.xml
+/behat.yml
+/bower_components/
+/var/cache/*
+/var/html/*
+/var/logs/*
+/var/log/*
+/var/bootstrap.php.cache
+/var/SymfonyRequirements.php
+/vendor
+/public/assetic/*[0-9]*
+/public/assets/dev
+/public/bundles
+/public/config.php
+/public/media
+!/public/media/.gitkeep
+/public/uploads
+!/public/uploads/.gitkeep
+app/Resources/front/jsconfig.json
+templates/front/jsconfig.json
+.env
+
+
+# OSX
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# IDE
+.idea
+*.sublime-workspace
+*.sublime-project
+.vscode
+
+# Front
+frmw-doc
+/web
+node_modules
+htmllint-report.xml
+todo.md
+.sass-cache
+npm-debug.log
+yarn-error.log
+yarn.lock
+*.js.map
+*.js.twig.map
+public/dev
+jsconfig.json
+package-lock.json
+
+# Misc
+.~lock*
+.svn
+
+!.gitkeep
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###

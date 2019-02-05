@@ -1,0 +1,2 @@
+/*! Polyfill from MDN */
+!function(){for(var o=0,n=["webkit","moz"],i=0;i<n.length&&!window.requestAnimationFrame;++i)window.requestAnimationFrame=window[n[i]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[n[i]+"CancelAnimationFrame"]||window[n[i]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(n){var i=(new Date).getTime(),e=Math.max(0,16-(i-o)),a=window.setTimeout(function(){n(i+e)},e);return o=i+e,a}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(n){clearTimeout(n)})}();

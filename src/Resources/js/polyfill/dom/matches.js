@@ -1,0 +1,2 @@
+/*! Polyfill from MDN */
+window.Element&&!Element.prototype.matches&&function(e){e.matches=e.matchesSelector=e.matchesSelector||e.webkitMatchesSelector||e.mozMatchesSelector||e.msMatchesSelector||e.oMatchesSelector||function(e){for(var t=(this.parentNode||this.document).querySelectorAll(e),o=-1;t[++o]&&t[o]!==this;);return!!t[o]}}(Element.prototype);

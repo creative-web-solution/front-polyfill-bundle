@@ -1,0 +1,31 @@
+{
+    "name": "cws/front-polyfill-bundle",
+    "description": "Generate the necessary polyfill.",
+    "keywords": [
+        "cws",
+        "front",
+        "polyfill"
+    ],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "CWS",
+            "email": "cws-info@cws-studio.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.1",
+        "symfony/cache": "^4.0 || ^4.1 || ^4.2",
+        "symfony/dependency-injection": "^4.0 || ^4.1 || ^4.2",
+        "symfony/finder": "^4.0 || ^4.1 || ^4.2",
+        "symfony/framework-bundle": "^4.0 || ^4.1 || ^4.2",
+        "symfony/yaml": "^4.0 || ^4.1 || ^4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cws\\Bundle\\FrontPolyfillBundle\\": "src/"
+        }
+    }
+}

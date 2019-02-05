@@ -1,0 +1,2 @@
+/*! Polyfill from MDN */
+Array.prototype.findIndex||(Array.prototype.findIndex=function(r){"use strict";if(null==this)throw new TypeError("Array.prototype.find called on null or undefined");if("function"!=typeof r)throw new TypeError("The argument must be a function");for(var n,t=Object(this),e=t.length>>>0,o=arguments[1],i=0;i<e;i++)if(n=t[i],r.call(o,n,i,t))return i;return-1});
