@@ -1,8 +1,11 @@
 {
-    "name": "cws/front-polyfill-bundle",
+    "name": "creative-web-solution/front-polyfill-bundle",
     "description": "Generate the necessary polyfill.",
     "keywords": [
+        "creative-web-solution",
         "cws",
+        "bundle",
+        "symfony4",
         "front",
         "polyfill"
     ],
