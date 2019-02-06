@@ -2,7 +2,7 @@
 
 namespace Cws\Bundle\FrontPolyfillBundle\Controller;
 
-use Cws\Bundle\FrontPolyfillBundle\FrontPolyfill\FrontPolyfill;
+use Cws\Bundle\FrontPolyfillBundle\Response\ResponseConfig;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,19 +20,11 @@ class PolyfillController extends AbstractController
      */
     public function jsConfig()
     {
-        $response = new Response();
-        $response->setMaxAge(31536000); // 1 year in seconds
-
-        $expirationDate = new \DateTime();
-        $expirationDate->modify('+'.$response->getMaxAge().' seconds');
-
-        $response->setExpires($expirationDate);
-        $response->headers->set('Content-Type', 'text/javascript');
-        $response->setCache(['public' => true]);
+        $response = new ResponseConfig();
 
         return $this->render('@CwsFrontPolyfill/system/config.js.twig', [
             'polyfillList' => $this->get('cws.polyfill.front_polyfill')->getActivePolyfill()
-        ], $response);
+        ], $response->buildJs());
     }
 
     /**
@@ -46,16 +38,8 @@ class PolyfillController extends AbstractController
     public function jsPolyfill(Request $request)
     {
         $polyfill = $this->get('cws.polyfill.front_polyfill');
-        $response = new Response($polyfill->getContent(array_keys($request->query->all())));
-        $response->setMaxAge(31536000); // 1 year in seconds
+        $responseConfig = new ResponseConfig();
 
-        $expirationDate = new \DateTime();
-        $expirationDate->modify('+'.$response->getMaxAge().' seconds');
-
-        $response->setExpires($expirationDate);
-        $response->headers->set('Content-Type', 'text/javascript');
-        $response->setCache(['public' => true]);
-
-        return $response;
+        return $responseConfig->buildJs(new Response($polyfill->getContent(array_keys($request->query->all()))));
     }
 }
