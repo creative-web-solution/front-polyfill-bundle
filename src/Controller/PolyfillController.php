@@ -14,6 +14,28 @@ use Symfony\Component\HttpFoundation\Response;
 class PolyfillController extends AbstractController
 {
     /**
+     * @return Response
+     *
+     * @throws \Exception
+     */
+    public function jsConfig()
+    {
+        $response = new Response();
+        $response->setMaxAge(31536000); // 1 year in seconds
+
+        $expirationDate = new \DateTime();
+        $expirationDate->modify('+'.$response->getMaxAge().' seconds');
+
+        $response->setExpires($expirationDate);
+        $response->headers->set('Content-Type', 'text/javascript');
+        $response->setCache(['public' => true]);
+
+        return $this->render('@CwsFrontPolyfill/system/config.js.twig', [
+            'polyfillList' => $this->get('cws.polyfill.front_polyfill')->getActivePolyfill()
+        ], $response);
+    }
+
+    /**
      * @param Request $request
      *
      * @return Response

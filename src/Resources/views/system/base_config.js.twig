@@ -1,0 +1,18 @@
+(function (w) {
+    {% block config_js_project %}
+    w.PROJECT = {};
+    {% endblock %}
+    {% block config_js_project_settings %}
+    w.PROJECT.settings = {};
+    {% endblock %}
+    {% block config_js_project_l10n %}
+    w.PROJECT.l10n = {};
+    {% endblock %}
+    {%- if polyfillList is defined and polyfillList.count > 0 -%}
+    w.PROJECT.polyfill={"url":"{{ asset(path('cws.front.js_polyfill'))|raw }}","detect":[
+            {%- for name, polyfill in polyfillList.list -%}
+            {"test":{{ polyfill.test|raw }},"name":"{{ name|raw }}"}{{ loop.last ? '' : ',' }}
+            {%- endfor -%}
+        ]};
+    {%- endif -%}
+}(window));
