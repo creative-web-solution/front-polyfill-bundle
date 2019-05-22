@@ -19,5 +19,11 @@
         <!-- Alias -->
         <service id="%cws.polyfill.front_polyfill.class%" alias="cws.polyfill.front_polyfill" />
         <service id="%cws.polyfill.finder.class%" alias="cws.polyfill.finder" />
+
+        <service id="Cws\Bundle\FrontPolyfillBundle\FrontPolyfill\FrontPolyfillTwigExtension">
+            <tag name="twig.extension"/>
+            <argument type="service" id="cws.polyfill.front_polyfill" />
+            <argument type="service" id="Symfony\Component\HttpFoundation\RequestStack" />
+        </service>
     </services>
 </container>

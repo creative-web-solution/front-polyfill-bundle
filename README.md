@@ -32,6 +32,14 @@ cws.polyfill:
     resource: '@CwsFrontPolyfillBundle/Resources/config/routing.xml'
 ```
 
+## To use as services
+
+Add this line in the import section of your app services.yaml
+
+imports:
+    - { resource: '@CwsFrontPolyfillBundle/Resources/config/services.xml' }
+
+
 ## Use
 
 You can call the route with the names of the polyfill in parameter, it will send you a response filled with the polyfills.
