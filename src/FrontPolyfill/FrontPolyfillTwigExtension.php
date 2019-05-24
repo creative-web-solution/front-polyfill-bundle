@@ -42,11 +42,26 @@ class FrontPolyfillTwigExtension extends AbstractExtension
     }
 
     /**
-     * @return string
+     * @param string [$returnType='list'] - list|js
+     * @param string [$nameTag='name']
+     * @param string [$testTag='test']
+     *
+     * @return string|array
      */
-    public function getFrontPolyfillList()
+    public function getFrontPolyfillList($returnType = 'list', $nameTag = 'name', $testTag = 'test')
     {
-        return $this->polyfill->getActivePolyfill();
+        $list = $this->polyfill->getActivePolyfill();
+
+        if ($returnType == 'js') {
+            $returnString = '[';
+            foreach ($list['list'] as $key => $value) {
+                $returnString .= '{"' . $testTag . '":' . $value['test'] .
+                                 ',"' . $nameTag . '":"' . $key . '"},';
+            }
+            return $returnString . ']';
+        }
+        
+        return $list;
     }
 
     /**

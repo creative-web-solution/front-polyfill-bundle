@@ -1,0 +1,282 @@
+polyfill:
+    promise:
+        file: 'polyfill/promise.js'
+        test: '!("Promise" in window)'
+        active: false
+        support:
+            chrome: 33
+            firefox: 29
+            ie: false
+            edge: true
+            opera: 20
+            safari: 7.1
+            ios: 8
+            android: 4.4
+
+    arrfill:
+        file: 'polyfill/array/fill.js'
+        test: '![].fill'
+        active: false
+        support:
+            chrome: 45
+            firefox: 31
+            ie: false
+            edge: true
+            opera: true
+            safari: 8
+            ios: 8
+            android: 5
+
+    arrfind:
+        file: 'polyfill/array/find.js'
+        test: '!("find" in Array.prototype)'
+        active: false
+        support:
+            chrome: 45
+            firefox: 25
+            ie: false
+            edge: true
+            opera: 32
+            safari: 8
+            ios: 8
+            android: 5
+
+    arrfi:
+        file: 'polyfill/array/findindex.js'
+        test: '!("findIndex" in Array.prototype)'
+        active: false
+        support:
+            chrome: 45
+            firefox: 25
+            ie: false
+            edge: true
+            opera: 32
+            safari: 8
+            ios: 8
+            android: 5
+
+    arrfrom:
+        file: 'polyfill/array/from.js'
+        test: '!Array.from'
+        active: false
+        support:
+            chrome: 45
+            firefox: 32
+            ie: false
+            edge: true
+            opera: true
+            safari: 9
+            ios: 9
+            android: 5
+
+    arrinc:
+        file: 'polyfill/array/includes.js'
+        test: '!("includes" in Array.prototype)'
+        active: false
+        support:
+            chrome: 47
+            firefox: 43
+            ie: false
+            edge: 14
+            opera: 34
+            safari: 9
+            ios: 9
+            android: 5
+
+    arrof:
+        file: 'polyfill/array/of.js'
+        test: '!Array.of'
+        active: false
+        support:
+            chrome: 45
+            firefox: 25
+            ie: false
+            edge: yes
+            opera: false
+            safari: 9
+            ios: 9
+            android: 5
+
+    classlist:
+        file: 'polyfill/dom/classlist.js'
+        test: '!("classList" in document.createElement("_")) || document.createElementNS && !("classList" in document.createElementNS("http://www.w3.org/2000/svg", "g"))'
+        active: false
+        support:
+            chrome: 28
+            firefox: 26
+            # 10 and 11 (not on SVG elements, no toggle fonction)
+            ie: false
+            edge: 12
+            opera: 15
+            safari: 7
+            ios: 7
+            android: 4.4
+
+    closest:
+        file: 'polyfill/dom/closest.js'
+        test: '!("closest" in Element.prototype)'
+        active: false
+        support:
+            chrome: 40
+            firefox: 34
+            ie: false
+            edge: 15
+            opera: 28
+            safari: 9
+            ios: 9.2
+            android: 5
+
+    eachnl:
+        file: 'polyfill/dom/for-each-node-list.js'
+        test: '!("forEach" in NodeList.prototype)'
+        active: false
+        support:
+            chrome: 51
+            firefox: 50
+            ie: false
+            edge: 16
+            opera: 38
+            safari: 10
+            ios: 10
+            android: 5
+
+    domch:
+        file: 'polyfill/dom/manipulation.js'
+        test: '!("append" in Element.prototype) || !("append" in CharacterData.prototype) || !("append" in DocumentType.prototype)'
+        active: false
+        support:
+            chrome: 54
+            firefox: 49
+            ie: false
+            edge: 17
+            opera: 41
+            safari: 10
+            ios: 10
+            android: 5
+
+    matches:
+        file: 'polyfill/dom/matches.js'
+        test: '!("matches" in Element.prototype)'
+        active: false
+        support:
+            chrome: 34
+            firefox: 34
+            ie: false
+            edge: 15
+            opera: 21
+            safari: 7.1
+            ios: 8
+            android: 5
+
+    picture:
+        file: 'polyfill/dom/picturefill.js'
+        test: '!("HTMLPictureElement" in window)'
+        active: false
+        support:
+            chrome: 38
+            firefox: 38
+            ie: false
+            edge: 13
+            opera: 25
+            safari: 9.1
+            ios: 9.3
+            android: 5
+
+    domnav:
+        file: 'polyfill/dom/traversing.js'
+        test: '!("nextElementSibling" in Element.prototype) || !("nextElementSibling" in CharacterData.prototype)'
+        active: false
+        support:
+            chrome: 29
+            firefox: 25
+            ie: false
+            edge: false
+            opera: 16
+            safari: false
+            ios: false
+            android: 5
+
+    objass:
+        file: 'polyfill/assign.js'
+        test: 'typeof Object.assign !== "function"'
+        active: false
+        support:
+            chrome: 45
+            firefox: 34
+            ie: false
+            edge: true
+            opera: 32
+            safari: 9
+            ios: 9
+            android: 5
+
+    schparams:
+        file: 'polyfill/url-search-params.js'
+        test: '!("URLSearchParams" in window)'
+        active: false
+        support:
+            chrome: 49
+            firefox: 44
+            ie: false
+            edge: 17
+            opera: 36
+            safari: 10.1
+            ios: 10.3
+            android: 5
+
+    abtctrl:
+        file: 'polyfill/abort-controller.js'
+        test: '!("AbortController" in window)'
+        active: false
+        support:
+            chrome: 66
+            firefox: 57
+            ie: false
+            edge: 16
+            opera: 53
+            safari: false
+            ios: 11.4
+            android: 5
+
+    fetch:
+        file: 'polyfill/fetch.js'
+        test: '!("fetch" in window)'
+        active: false
+        support:
+            chrome: 42
+            firefox: 40
+            ie: false
+            edge: 14
+            opera: 29
+            safari: 10.1
+            ios: 10.3
+            android: 5
+
+    matchmedia:
+        file: 'polyfill/match-media.js'
+        test: '!window.matchMedia || !window.matchMedia("all").addListener'
+        active: false
+        support:
+            chrome: 6
+            firefox: 9
+            ie: 10
+            edge: 12
+            opera: 12.1
+            safari: 5.1
+            ios: 5.1
+            android: 3
+
+    raf:
+        file: 'polyfill/request-animation-frame.js'
+        test: '!window.requestAnimationFrame'
+        active: false
+        support:
+            chrome: 24
+            firefox: 23
+            ie: true
+            edge: true
+            opera: 15
+            safari: 6.1
+            ios: 7
+            android: 4.4
+

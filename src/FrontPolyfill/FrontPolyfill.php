@@ -33,9 +33,15 @@ class FrontPolyfill
      *
      * @throws NoFileException
      */
-    public function __construct(FinderInterface $finder, string $rootDir)
+    public function __construct(FinderInterface $finder, string $rootDir, string $configFilePath)
     {
-        $file = $finder->find(sprintf('%s/../frontend/polyfill', $rootDir), 'config.yaml');
+        $path = dirname($configFilePath);
+
+        if (  (substr($configFilePath, 0, 1) !== DIRECTORY_SEPARATOR) ) {
+            $path = DIRECTORY_SEPARATOR . $path;
+        }
+
+        $file = $finder->find(sprintf('%s/..' . $path, $rootDir), basename($configFilePath));
 
         $this
             ->setConfig($file)

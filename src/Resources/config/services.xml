@@ -4,6 +4,7 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
+        <parameter key="cws.polyfill.config_path">/frontend/polyfill/config.yaml</parameter>
         <parameter key="cws.polyfill.front_polyfill.class">Cws\Bundle\FrontPolyfillBundle\FrontPolyfill\FrontPolyfill</parameter>
         <parameter key="cws.polyfill.finder.class">Cws\Bundle\FrontPolyfillBundle\Finder\Finder</parameter>
     </parameters>
@@ -12,6 +13,7 @@
         <service id="cws.polyfill.front_polyfill" class="%cws.polyfill.front_polyfill.class%" public="true">
             <argument type="service" id="cws.polyfill.finder" />
             <argument>%kernel.root_dir%</argument>
+            <argument>%cws.polyfill.config_path%</argument>
         </service>
 
         <service id="cws.polyfill.finder" class="%cws.polyfill.finder.class%" />
