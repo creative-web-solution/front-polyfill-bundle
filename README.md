@@ -2,9 +2,9 @@
 
 ## Configuration
 
-**Create a YAML file like this one:**
+**Create a YAML file:**
 
-Copy the `Resources/sample/config.yaml` in your app (in `/frontend/polyfill/config.yaml` for example).
+You can copy the `Resources/sample/config.yaml` in your app (in `/frontend/polyfill/config.yaml` for example).
 
 You can configure this path by overriding this parameters in your app:
 
@@ -26,7 +26,7 @@ cws.polyfill:
 
 ## Services
 
-Add this line in the import section of your app services.yaml
+Add this line in the import section of your __services.yaml__
 
 ```
 imports:
