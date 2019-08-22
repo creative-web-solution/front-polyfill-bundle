@@ -1,30 +1,16 @@
 polyfill:
-    promise:
-        file: 'polyfill/promise.js'
-        test: '!("Promise" in window)'
+    arrfi:
+        file: 'polyfill/array/findindex.js'
+        test: '!("findIndex" in Array.prototype)'
         active: false
         support:
-            chrome: 33
-            firefox: 29
+            chrome: 45
+            firefox: 25
             ie: false
             edge: true
-            opera: 20
-            safari: 7.1
+            opera: 32
+            safari: 8
             ios: 8
-            android: 4.4
-
-    promfinally:
-        file: 'polyfill/promise.finally.js'
-        test: '("Promise" in window) && !("finally" in Promise.prototype)'
-        active: false
-        support:
-            chrome: 63
-            firefox: 58
-            ie: false
-            edge: 18
-            opera: 50
-            safari: 11.1
-            ios: 11.1
             android: 5
 
     arrfill:
@@ -44,20 +30,6 @@ polyfill:
     arrfind:
         file: 'polyfill/array/find.js'
         test: '!("find" in Array.prototype)'
-        active: false
-        support:
-            chrome: 45
-            firefox: 25
-            ie: false
-            edge: true
-            opera: 32
-            safari: 8
-            ios: 8
-            android: 5
-
-    arrfi:
-        file: 'polyfill/array/findindex.js'
-        test: '!("findIndex" in Array.prototype)'
         active: false
         support:
             chrome: 45
@@ -140,20 +112,6 @@ polyfill:
             ios: 9.2
             android: 5
 
-    eachnl:
-        file: 'polyfill/dom/for-each-node-list.js'
-        test: '!("forEach" in NodeList.prototype)'
-        active: false
-        support:
-            chrome: 51
-            firefox: 50
-            ie: false
-            edge: 16
-            opera: 38
-            safari: 10
-            ios: 10
-            android: 5
-
     domch:
         file: 'polyfill/dom/manipulation.js'
         test: '!("append" in Element.prototype) || !("append" in CharacterData.prototype) || !("append" in DocumentType.prototype)'
@@ -164,6 +122,34 @@ polyfill:
             ie: false
             edge: 17
             opera: 41
+            safari: 10
+            ios: 10
+            android: 5
+
+    domnav:
+        file: 'polyfill/dom/traversing.js'
+        test: '!("nextElementSibling" in Element.prototype) || !("nextElementSibling" in CharacterData.prototype)'
+        active: false
+        support:
+            chrome: 29
+            firefox: 25
+            ie: false
+            edge: false
+            opera: 16
+            safari: false
+            ios: false
+            android: 5
+
+    eachnl:
+        file: 'polyfill/dom/for-each-node-list.js'
+        test: '!("forEach" in NodeList.prototype)'
+        active: false
+        support:
+            chrome: 51
+            firefox: 50
+            ie: false
+            edge: 16
+            opera: 38
             safari: 10
             ios: 10
             android: 5
@@ -182,6 +168,34 @@ polyfill:
             ios: 8
             android: 5
 
+    matchmedia:
+        file: 'polyfill/match-media.js'
+        test: '!window.matchMedia || !window.matchMedia("all").addListener'
+        active: false
+        support:
+            chrome: 6
+            firefox: 9
+            ie: 10
+            edge: 12
+            opera: 12.1
+            safari: 5.1
+            ios: 5.1
+            android: 3
+
+    objass:
+        file: 'polyfill/assign.js'
+        test: 'typeof Object.assign !== "function"'
+        active: false
+        support:
+            chrome: 45
+            firefox: 34
+            ie: false
+            edge: true
+            opera: 32
+            safari: 9
+            ios: 9
+            android: 5
+
     picture:
         file: 'polyfill/dom/picturefill.js'
         test: '!("HTMLPictureElement" in window)'
@@ -196,32 +210,64 @@ polyfill:
             ios: 9.3
             android: 5
 
-    domnav:
-        file: 'polyfill/dom/traversing.js'
-        test: '!("nextElementSibling" in Element.prototype) || !("nextElementSibling" in CharacterData.prototype)'
+    raf:
+        file: 'polyfill/request-animation-frame.js'
+        test: '!window.requestAnimationFrame'
         active: false
         support:
-            chrome: 29
-            firefox: 25
-            ie: false
-            edge: false
-            opera: 16
-            safari: false
-            ios: false
-            android: 5
+            chrome: 24
+            firefox: 23
+            ie: true
+            edge: true
+            opera: 15
+            safari: 6.1
+            ios: 7
+            android: 4.4
 
-    objass:
-        file: 'polyfill/assign.js'
-        test: 'typeof Object.assign !== "function"'
+    # ------------------------- PROMISE
+
+    promise:
+        file: 'polyfill/promise.js'
+        test: '!("Promise" in window)'
         active: false
         support:
-            chrome: 45
-            firefox: 34
+            chrome: 33
+            firefox: 29
             ie: false
             edge: true
-            opera: 32
-            safari: 9
-            ios: 9
+            opera: 20
+            safari: 7.1
+            ios: 8
+            android: 4.4
+
+    promfinally:
+        file: 'polyfill/promise.finally.js'
+        test: '("Promise" in window) && !("finally" in Promise.prototype)'
+        active: false
+        support:
+            chrome: 63
+            firefox: 58
+            ie: false
+            edge: 18
+            opera: 50
+            safari: 11.1
+            ios: 11.1
+            android: 5
+
+    # ------------------------- FETCH
+
+    fetch:
+        file: 'polyfill/fetch.js'
+        test: '!("fetch" in window)'
+        active: false
+        support:
+            chrome: 42
+            firefox: 40
+            ie: false
+            edge: 14
+            opera: 29
+            safari: 10.1
+            ios: 10.3
             android: 5
 
     schparams:
@@ -252,45 +298,34 @@ polyfill:
             ios: 11.4
             android: 5
 
-    fetch:
-        file: 'polyfill/fetch.js'
-        test: '!("fetch" in window)'
+    # ------------------------- INTERSECTION OBSERVER
+
+    intobs:
+        file: 'intersection-observer.js'
+        test: '!("IntersectionObserver" in window && "IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype)'
         active: false
         support:
-            chrome: 42
-            firefox: 40
+            chrome: 58
+            firefox: 55
             ie: false
-            edge: 14
-            opera: 29
-            safari: 10.1
-            ios: 10.3
+            edge: 16
+            opera: 45
+            safari: 12.1
+            ios: 12.3
             android: 5
 
-    matchmedia:
-        file: 'polyfill/match-media.js'
-        test: '!window.matchMedia || !window.matchMedia("all").addListener'
+    intobsisint:
+        file: 'intersection-observer-is-intersecting.js'
+        test: '"IntersectionObserver" in window && "IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype && !("isIntersecting" in window.IntersectionObserverEntry.prototype)'
         active: false
         support:
-            chrome: 6
-            firefox: 9
-            ie: 10
-            edge: 12
-            opera: 12.1
-            safari: 5.1
-            ios: 5.1
-            android: 3
+            chrome: 58
+            firefox: 55
+            ie: false
+            edge: 16
+            opera: 45
+            safari: 12.1
+            ios: 12.3
+            android: 5
 
-    raf:
-        file: 'polyfill/request-animation-frame.js'
-        test: '!window.requestAnimationFrame'
-        active: false
-        support:
-            chrome: 24
-            firefox: 23
-            ie: true
-            edge: true
-            opera: 15
-            safari: 6.1
-            ios: 7
-            android: 4.4
 
