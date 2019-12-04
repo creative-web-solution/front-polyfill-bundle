@@ -60,17 +60,23 @@ class FrontPolyfillTwigExtension extends AbstractExtension
             }
             return $returnString . ']';
         }
-        
+
         return $list;
     }
 
     /**
      * @return string
      */
-    public function getFrontPolyfillContent()
+    public function getFrontPolyfillContent($mode = 'query')
     {
         $request = $this->request->getCurrentRequest();
 
-        return $this->polyfill->getContent(array_keys($request->query->all()));
+        if ($mode == 'query') {
+            return $this->polyfill->getContent(array_keys($request->query->all()));
+        }
+
+        $filename = $request->get('polyfill_list');
+
+        return $this->polyfill->getContent(explode('-', $filename));
     }
 }

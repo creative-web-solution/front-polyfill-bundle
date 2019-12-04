@@ -15,15 +15,6 @@ parameters:
 
 Activate the polyfills you need by setting `active: true` in this config file.
 
-## Route
-
-Paste this in __routes.yaml__:
-
-```
-cws.polyfill:
-    resource: '@CwsFrontPolyfillBundle/Resources/config/routing.xml'
-```
-
 ## Services
 
 Add this line in the import section of your __services.yaml__
@@ -33,9 +24,7 @@ imports:
     - { resource: '@CwsFrontPolyfillBundle/Resources/config/services.xml' }
 ```
 
-## Use
-
-### Javascript support tests
+## Javascript support tests
 
 Get the active polyfill list:
 
@@ -97,11 +86,8 @@ var myPolyfillArray = [{
 ];
 ```
 
-**Polyfill content**
 
-Then use it to create an url to load the polyfill content.
-
-Here an example:
+Here a full example to create an url like 'js/pf1-pf2-pf3.js':
 
 ```php
 {% set polyfillArrayString = get_front_polyfill_list('js') %}
@@ -121,7 +107,7 @@ Here an example:
             });
 
         if ( neededPolyfill.length ) {
-            polyfillContentUrl = '{{ asset(path('cws.front.js_polyfill')) }}?' + neededPolyfill.join( '&' );
+            polyfillContentUrl = `js/${ neededPolyfill.join( '-' ) }.js`;
         }
     {%- endif -%}
 
@@ -139,4 +125,56 @@ Here an example:
         document.head.appendChild(script);
     } );
 </script>
+```
+
+
+## Polyfill loading
+
+Use the array of test to create an url to load the polyfill content.
+
+There is 2 ways to load the polyfills:
+
+
+### 1/ The polyfill names are contained in the filename itself and separated by `-`
+
+This is the **recommended way** to do it because this way allow you **to create a real file**. Handy with Symfony as if the file exists, **it will not be rerendered**.
+
+```
+<script src="js/domch-eachnl-picture.js"></script>
+```
+
+Inside the Twig file that render the response for `domch-eachnl-picture.js` (and save the file if you want):
+
+```
+{{ get_front_polyfill_content('filename')|raw }}
+
+// Other stuff in JS
+```
+
+The route to the file **MUST** contains the placeholder `polyfill_list`. So, in our example `js/domch-eachnl-picture.js`, the route must be `/js/{polyfill_list}.js`
+
+
+**When there is a clear cache action, it is recommended to delete this files as well.**
+
+
+### 2/ The polyfill names are contained in the query string and separated by `&`
+
+```
+<script src="js/polyfill.js?domch&eachnl&picture"></script>
+```
+
+Inside the Twig file that render the response for `polyfill.js`:
+
+```
+{{ get_front_polyfill_content('query')|raw }}
+
+// Other stuff in JS
+```
+
+Or
+
+```
+{{ get_front_polyfill_content()|raw }}
+
+// Other stuff in JS
 ```
