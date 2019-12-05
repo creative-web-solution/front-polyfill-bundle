@@ -25,19 +25,25 @@ class FrontPolyfill
     /** @var string */
     protected $rootDir;
 
+    /** @var string */
+    protected $routePlaceholder;
+
     /**
      * FrontPolyfill constructor.
      *
      * @param FinderInterface $finder
      * @param string $rootDir
+     * @param string $configFilePath
+     * @param string $routePlaceholder
      *
      * @throws NoFileException
      */
-    public function __construct(FinderInterface $finder, string $rootDir, string $configFilePath)
+    public function __construct(FinderInterface $finder, string $rootDir, string $configFilePath, string $routePlaceholder)
     {
+        $this->routePlaceholder = $routePlaceholder;
         $path = dirname($configFilePath);
 
-        if (  (substr($configFilePath, 0, 1) !== DIRECTORY_SEPARATOR) ) {
+        if ( (substr($configFilePath, 0, 1) !== DIRECTORY_SEPARATOR) ) {
             $path = DIRECTORY_SEPARATOR . $path;
         }
 
@@ -191,5 +197,13 @@ class FrontPolyfill
         $this->rootDir = $rootDir;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRoutePlaceholder()
+    {
+        return $this->routePlaceholder;
     }
 }

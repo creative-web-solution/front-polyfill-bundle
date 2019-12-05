@@ -75,7 +75,7 @@ class FrontPolyfillTwigExtension extends AbstractExtension
             return $this->polyfill->getContent(array_keys($request->query->all()));
         }
 
-        $filename = $request->get('polyfill_list');
+        $filename = $request->get($this->polyfill->getRoutePlaceholder());
 
         return $this->polyfill->getContent(explode('-', $filename));
     }

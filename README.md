@@ -151,10 +151,17 @@ Inside the Twig file that render the response for `domch-eachnl-picture.js` (and
 // Other stuff in JS
 ```
 
-The route to the file **MUST** contains the placeholder `polyfill_list`. So, in our example `js/domch-eachnl-picture.js`, the route must be `/js/{polyfill_list}.js`
+The route to this file **MUST** contains a placeholder. By default its name is `polyfill_list`. So, in our example `/js/domch-eachnl-picture.js`, the route must be `/js/{polyfill_list}.js`
+
+You can configure the placeholder name in the `parameters.yaml`:
+
+```
+parameters:
+    cws.polyfill.route_placeholder: polyfill_list
+```
 
 
-**When there is a clear cache action, it is recommended to delete this files as well.**
+**When there is a clear cache action, it is recommended to delete those generated files as well.**
 
 
 ### 2/ The polyfill names are contained in the query string and separated by `&`
