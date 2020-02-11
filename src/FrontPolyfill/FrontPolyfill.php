@@ -22,6 +22,9 @@ class FrontPolyfill
     /** @var array */
     protected $config;
 
+    /** @var array */
+    protected $userConfig;
+    
     /** @var string */
     protected $rootDir;
 
@@ -38,19 +41,29 @@ class FrontPolyfill
      *
      * @throws NoFileException
      */
-    public function __construct(FinderInterface $finder, string $rootDir, string $configFilePath, string $routePlaceholder)
-    {
+    public function __construct(
+        FinderInterface $finder,
+        string $rootDir,
+        string $configFilePath,
+        string $routePlaceholder
+    ) {
         $this->routePlaceholder = $routePlaceholder;
         $path = dirname($configFilePath);
 
-        if ( (substr($configFilePath, 0, 1) !== DIRECTORY_SEPARATOR) ) {
+        if ((substr($configFilePath, 0, 1) !== DIRECTORY_SEPARATOR)) {
             $path = DIRECTORY_SEPARATOR . $path;
         }
 
-        $file = $finder->find(sprintf('%s/..' . $path, $rootDir), basename($configFilePath));
+        $userConfig = $finder->find(sprintf('%s/..' . $path, $rootDir), basename($configFilePath));
+        $polyfillConfig = sprintf(
+            '%s/../Resources/config/%s',
+            __DIR__,
+            'polyfill.yaml'
+        );
 
         $this
-            ->setConfig($file)
+            ->setConfig($polyfillConfig)
+            ->setUserConfig($userConfig)
             ->setFinder($finder)
             ->setRootDir($rootDir)
         ;
@@ -73,15 +86,15 @@ class FrontPolyfill
 
         $keys = array_unique($names);
 
-         sort($keys);
-         $cacheKey = implode('_', $keys);
+        sort($keys);
+        $cacheKey = implode('_', $keys);
 
-         $cache = new FilesystemAdapter();
-         $polyfillCache = $cache->getItem(sprintf('%s.%s', self::CACHE_KEY_BEGIN, $cacheKey));
+        $cache = new FilesystemAdapter();
+        $polyfillCache = $cache->getItem(sprintf('%s.%s', self::CACHE_KEY_BEGIN, $cacheKey));
 
-         if ($polyfillCache->isHit()) {
-             return $polyfillCache->get();
-         }
+        if ($polyfillCache->isHit()) {
+            return $polyfillCache->get();
+        }
 
         $result = [];
         $polyfillList = $this->getConfig()['polyfill'];
@@ -115,7 +128,9 @@ class FrontPolyfill
         $activePolyfillCount = 0;
 
         foreach ($this->getConfig()['polyfill'] as $key => $polyfill) {
-            if ($polyfill['active']) {
+            if (isset($this->getUserConfig()['polyfill'][$key]) &&
+                $this->getUserConfig()['polyfill'][$key]['active']
+            ) {
                 $activePolyfill[$key] = $polyfill;
                 ++$activePolyfillCount;
             }
@@ -155,6 +170,32 @@ class FrontPolyfill
         }
 
         $this->config = Yaml::parse(file_get_contents($file));
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getUserConfig()
+    {
+        return $this->userConfig;
+    }
+
+    /**
+     * @param null|SplFileInfo $file
+     *
+     * @return FrontPolyfill
+     *
+     * @throws NoFileException
+     */
+    public function setUserConfig($file = null)
+    {
+        if (is_null($file)) {
+            throw new NoFileException();
+        }
+
+        $this->userConfig = Yaml::parse(file_get_contents($file));
 
         return $this;
     }
