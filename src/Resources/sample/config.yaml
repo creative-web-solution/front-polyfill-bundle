@@ -183,7 +183,7 @@ polyfill:
             android: 3
 
     objass:
-        file: 'polyfill/assign.js'
+        file: 'polyfill/object/assign.js'
         test: 'typeof Object.assign !== "function"'
         active: false
         support:
@@ -194,6 +194,34 @@ polyfill:
             opera: 32
             safari: 9
             ios: 9
+            android: 5
+
+    objentries:
+        file: 'polyfill/object/entries.js'
+        test: 'typeof Object.entries !== "function"'
+        active: false
+        support:
+            chrome: 54
+            firefox: 47
+            ie: false
+            edge: 14
+            opera: 41
+            safari: 10.1
+            ios: 10.3
+            android: 5
+
+    objvalues:
+        file: 'polyfill/object/values.js'
+        test: 'typeof Object.values !== "function"'
+        active: false
+        support:
+            chrome: 54
+            firefox: 47
+            ie: false
+            edge: 14
+            opera: 41
+            safari: 10.1
+            ios: 10.3
             android: 5
 
     picture:
@@ -257,7 +285,7 @@ polyfill:
     # ------------------------- FETCH
 
     fetch:
-        file: 'polyfill/fetch.js'
+        file: 'polyfill/fetch/fetch.js'
         test: '!("fetch" in window)'
         active: false
         support:
@@ -271,7 +299,7 @@ polyfill:
             android: 5
 
     schparams:
-        file: 'polyfill/url-search-params.js'
+        file: 'polyfill/fetch/url-search-params.js'
         test: '!("URLSearchParams" in window)'
         active: false
         support:
@@ -285,7 +313,7 @@ polyfill:
             android: 5
 
     abtctrl:
-        file: 'polyfill/abort-controller.js'
+        file: 'polyfill/fetch/abort-controller.js'
         test: '!("AbortController" in window)'
         active: false
         support:
