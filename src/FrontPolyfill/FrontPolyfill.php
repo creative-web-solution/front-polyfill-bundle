@@ -111,8 +111,8 @@ class FrontPolyfill
 
         $strResult = implode(PHP_EOL, $result);
 
-         $polyfillCache->set($strResult);
-         $cache->save($polyfillCache);
+        $polyfillCache->set($strResult);
+        $cache->save($polyfillCache);
 
         return $strResult;
     }

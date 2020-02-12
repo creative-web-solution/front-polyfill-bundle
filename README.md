@@ -140,10 +140,10 @@ There is 2 ways to load the polyfills:
 This is the **recommended way** to do it because this way allow you **to create a real file**. Handy with Symfony as if the file exists, **it will not be rerendered**.
 
 ```
-<script src="js/domch-eachnl-picture.js"></script>
+<script src="js/polyfill-domch-eachnl-picture.js"></script>
 ```
 
-Inside the Twig file that render the response for `domch-eachnl-picture.js` (and save the file if you want):
+Inside the Twig file that render the response for `polyfill-domch-eachnl-picture.js` (and save the file if you want):
 
 ```
 {{ get_front_polyfill_content('filename')|raw }}
@@ -151,7 +151,7 @@ Inside the Twig file that render the response for `domch-eachnl-picture.js` (and
 // Other stuff in JS
 ```
 
-The route to this file **MUST** contains a placeholder. By default its name is `polyfill_list`. So, in our example `/js/domch-eachnl-picture.js`, the route must be `/js/{polyfill_list}.js`
+The route to this file **MUST** contains a placeholder. By default its name is `polyfill_list`. So, in our example `/js/polyfill-domch-eachnl-picture.js`, the route must be `/js/polyfill-{polyfill_list}.js`
 
 You can configure the placeholder name in the `parameters.yaml`:
 
