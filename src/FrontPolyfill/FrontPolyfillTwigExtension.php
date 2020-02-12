@@ -67,7 +67,7 @@ class FrontPolyfillTwigExtension extends AbstractExtension
     /**
      * @return string
      */
-    public function getFrontPolyfillContent($mode = 'query')
+    public function getFrontPolyfillContent($mode = 'filename')
     {
         $request = $this->request->getCurrentRequest();
 

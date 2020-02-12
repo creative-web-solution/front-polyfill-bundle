@@ -146,7 +146,7 @@ This is the **recommended way** to do it because this way allow you **to create 
 Inside the Twig file that render the response for `polyfill-domch-eachnl-picture.js` (and save the file if you want):
 
 ```
-{{ get_front_polyfill_content('filename')|raw }}
+{{ get_front_polyfill_content()|raw }}
 
 // Other stuff in JS
 ```
@@ -170,18 +170,12 @@ parameters:
 <script src="js/polyfill.js?domch&eachnl&picture"></script>
 ```
 
+Tou have to specify it using the parameter `query` of the `get_front_polyfill_content` TWIG function.
+
 Inside the Twig file that render the response for `polyfill.js`:
 
 ```
 {{ get_front_polyfill_content('query')|raw }}
-
-// Other stuff in JS
-```
-
-Or
-
-```
-{{ get_front_polyfill_content()|raw }}
 
 // Other stuff in JS
 ```
