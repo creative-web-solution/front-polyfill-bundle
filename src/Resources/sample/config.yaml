@@ -23,6 +23,10 @@ polyfill:
         name: 'Array.of()'
         active: false
 
+    blob:
+        name: 'new Blob()'
+        active: false
+
     classlist:
         name: 'Element.classList'
         active: false
@@ -69,6 +73,10 @@ polyfill:
 
     raf:
         name: 'requestAnimationFrame()'
+        active: false
+
+    ric:
+        name: 'requestIdleCallback()'
         active: false
 
     # ------------------------- PROMISE

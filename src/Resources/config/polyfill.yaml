@@ -77,6 +77,19 @@ polyfill:
             ios: 9
             android: 5
 
+    blob:
+        file: 'polyfill/blob.js'
+        test: '!(function(){try{new Blob;return true;}catch(e){return false}}())'
+        support:
+            chrome: 45
+            firefox: 25
+            ie: false
+            edge: yes
+            opera: false
+            safari: 9
+            ios: 9
+            android: 5
+
     classlist:
         file: 'polyfill/dom/classlist.js'
         test: '!("classList" in document.createElement("_")) || document.createElementNS && !("classList" in document.createElementNS("http://www.w3.org/2000/svg", "g"))'
@@ -233,6 +246,19 @@ polyfill:
             safari: 6.1
             ios: 7
             android: 4.4
+
+    ric:
+        file: 'polyfill/request-idle-callback.js'
+        test: '!window.requestIdleCallback'
+        support:
+            chrome: 47
+            firefox: 55
+            ie: false
+            edge: 19
+            opera: 59
+            safari: false
+            ios: false
+            android: 5
 
     # ------------------------- PROMISE
 
