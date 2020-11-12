@@ -54,7 +54,7 @@ class FrontPolyfill
             $path = sprintf('%s%s', DIRECTORY_SEPARATOR, $path);
         }
 
-        $userConfig = $finder->find(sprintf('%s/%s', $rootDir, $path), basename($configFilePath));
+        $userConfig = $finder->find(sprintf('%s%s', $rootDir, $path), basename($configFilePath));
         $polyfillConfig = sprintf(
             '%s/../Resources/config/%s',
             __DIR__,
