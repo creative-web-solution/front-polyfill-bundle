@@ -3,6 +3,8 @@
 namespace Cws\Bundle\FrontPolyfillBundle\Response;
 
 use Cws\Bundle\FrontPolyfillBundle\Helper\TimeHelper;
+use DateTime;
+use Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -12,13 +14,13 @@ use Symfony\Component\HttpFoundation\Response;
 class ResponseConfig
 {
     /**
-     * @param Response $response
+     * @param Response|null $response
      *
      * @return Response
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    public function buildJs(Response $response = null)
+    public function buildJs(Response $response = null): Response
     {
         $response = $this->build($response);
         $response->headers->set('Content-Type', 'text/javascript');
@@ -31,9 +33,9 @@ class ResponseConfig
      *
      * @return Response
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    private function build(Response $response = null)
+    private function build(Response $response = null): Response
     {
         if (is_null($response)) {
             $response = new Response();
@@ -41,8 +43,8 @@ class ResponseConfig
 
         $response->setMaxAge(TimeHelper::YEAR_IN_SECONDS);
 
-        $expirationDate = new \DateTime();
-        $expirationDate->modify('+'.$response->getMaxAge().' seconds');
+        $expirationDate = new DateTime();
+        $expirationDate->modify(sprintf('+%s seconds', $response->getMaxAge()));
 
         $response->setExpires($expirationDate);
         $response->setCache(['public' => true]);
