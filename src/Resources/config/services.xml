@@ -13,7 +13,7 @@
     <services>
         <service id="cws.polyfill.front_polyfill" class="%cws.polyfill.front_polyfill.class%" public="true">
             <argument type="service" id="cws.polyfill.finder" />
-            <argument>%kernel.root_dir%</argument>
+            <argument>%kernel.project_dir%</argument>
             <argument>%cws.polyfill.config_path%</argument>
             <argument>%cws.polyfill.route_placeholder%</argument>
         </service>
