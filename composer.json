@@ -1,7 +1,7 @@
 {
     "name": "creative-web-solution/front-polyfill-bundle",
     "description": "Generate the necessary polyfill.",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "keywords": [
         "creative-web-solution",
         "cws",
