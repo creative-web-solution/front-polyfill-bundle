@@ -332,7 +332,7 @@ polyfill:
     # ------------------------- INTERSECTION OBSERVER
 
     intobs:
-        file: 'intersection-observer.js'
+        file: 'polyfill/intersection-observer.js'
         test: '!("IntersectionObserver" in window && "IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype)'
         support:
             chrome: 58
@@ -345,7 +345,7 @@ polyfill:
             android: 5
 
     intobsisint:
-        file: 'intersection-observer-is-intersecting.js'
+        file: 'polyfill/intersection-observer-is-intersecting.js'
         test: '"IntersectionObserver" in window && "IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype && !("isIntersecting" in window.IntersectionObserverEntry.prototype)'
         support:
             chrome: 58
