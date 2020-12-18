@@ -71,7 +71,7 @@ polyfill:
             chrome: 45
             firefox: 25
             ie: false
-            edge: yes
+            edge: true
             opera: false
             safari: 9
             ios: 9
@@ -84,7 +84,7 @@ polyfill:
             chrome: 45
             firefox: 25
             ie: false
-            edge: yes
+            edge: true
             opera: false
             safari: 9
             ios: 9
