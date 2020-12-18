@@ -221,6 +221,19 @@ polyfill:
             ios: 10.3
             android: 5
 
+    paintworklet:
+        file: 'polyfill/css-paint-polyfill.js'
+        test: '!("paintWorklet"in window.CSS)'
+        support:
+            chrome: 65
+            firefox: false
+            ie: false
+            edge: 79
+            opera: 52
+            safari: false
+            ios: false
+            android: 65
+
     picture:
         file: 'polyfill/dom/picturefill.js'
         test: '!("HTMLPictureElement" in window)'
