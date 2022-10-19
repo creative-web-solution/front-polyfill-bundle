@@ -1,7 +1,7 @@
 {
     "name": "creative-web-solution/front-polyfill-bundle",
     "description": "Generate the necessary polyfill.",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "keywords": [
         "creative-web-solution",
         "cws",
@@ -20,12 +20,12 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.1",
-        "symfony/cache": "^4.0 || ^4.1 || ^4.2 || ^5.1",
-        "symfony/dependency-injection": "^4.0 || ^4.1 || ^4.2 || ^5.1",
-        "symfony/finder": "^4.0 || ^4.1 || ^4.2 || ^5.1",
-        "symfony/framework-bundle": "^4.0 || ^4.1 || ^4.2 || ^5.1",
-        "symfony/yaml": "^4.0 || ^4.1 || ^4.2 || ^5.1"
+        "php": ">=7.1",
+        "symfony/cache": "^4.0 || ^4.1 || ^4.2 || ^5.1 || ^6.1",
+        "symfony/dependency-injection": "^4.0 || ^4.1 || ^4.2 || ^5.1 || ^6.1",
+        "symfony/finder": "^4.0 || ^4.1 || ^4.2 || ^5.1 || 6.1",
+        "symfony/framework-bundle": "^4.0 || ^4.1 || ^4.2 || ^5.1 || ^6.1",
+        "symfony/yaml": "^4.0 || ^4.1 || ^4.2 || ^5.1 || ^6.1"
     },
     "autoload": {
         "psr-4": {
