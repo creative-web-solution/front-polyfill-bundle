@@ -8,5 +8,5 @@ namespace Cws\Bundle\FrontPolyfillBundle\Helper;
  */
 class TimeHelper
 {
-    const YEAR_IN_SECONDS = 31536000;
+    public const YEAR_IN_SECONDS = 31536000;
 }

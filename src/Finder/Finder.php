@@ -11,7 +11,7 @@ use Symfony\Component\Finder\Finder as FinderComponent;
 class Finder implements FinderInterface
 {
     private $finder = null;
-    
+
     /**
      * {@inheritdoc}
      */

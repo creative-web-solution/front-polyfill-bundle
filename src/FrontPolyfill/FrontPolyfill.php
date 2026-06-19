@@ -14,7 +14,7 @@ use Symfony\Component\Yaml\Yaml;
  */
 class FrontPolyfill
 {
-    const CACHE_KEY_BEGIN = 'front_polyfill';
+    public const CACHE_KEY_BEGIN = 'front_polyfill';
 
     /** @var FinderInterface */
     protected $finder;
@@ -24,7 +24,7 @@ class FrontPolyfill
 
     /** @var array */
     protected $userConfig;
-    
+
     /** @var string */
     protected $rootDir;
 
@@ -128,8 +128,9 @@ class FrontPolyfill
         $activePolyfillCount = 0;
 
         foreach ($this->getConfig()['polyfill'] as $key => $polyfill) {
-            if (isset($this->getUserConfig()['polyfill'][$key]) &&
-                $this->getUserConfig()['polyfill'][$key]['active']
+            if (
+                isset($this->getUserConfig()['polyfill'][$key])
+                && $this->getUserConfig()['polyfill'][$key]['active']
             ) {
                 $activePolyfill[$key] = $polyfill;
                 ++$activePolyfillCount;
