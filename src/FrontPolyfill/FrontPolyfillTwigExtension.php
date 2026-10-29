@@ -2,7 +2,8 @@
 
 namespace Cws\Bundle\FrontPolyfillBundle\FrontPolyfill;
 
-use Cws\Bundle\FrontPolyfillBundle\FrontPolyfill\FrontPolyfill;
+use Cws\Bundle\FrontPolyfillBundle\Helper\RequestHelper;
+use Psr\Cache\InvalidArgumentException;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -33,11 +34,11 @@ class FrontPolyfillTwigExtension extends AbstractExtension
     /**
      * @return array
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
-            new TwigFunction('get_front_polyfill_list', [$this, 'getFrontPolyfillList']),
-            new TwigFunction('get_front_polyfill_content', [$this, 'getFrontPolyfillContent'])
+            new TwigFunction('get_front_polyfill_list', $this->getFrontPolyfillList(...)),
+            new TwigFunction('get_front_polyfill_content', $this->getFrontPolyfillContent(...))
         ];
     }
 
@@ -66,6 +67,7 @@ class FrontPolyfillTwigExtension extends AbstractExtension
 
     /**
      * @return string
+     * @throws InvalidArgumentException
      */
     public function getFrontPolyfillContent($mode = 'filename')
     {
@@ -75,7 +77,7 @@ class FrontPolyfillTwigExtension extends AbstractExtension
             return $this->polyfill->getContent(array_keys($request->query->all()));
         }
 
-        $filename = $request->get($this->polyfill->getRoutePlaceholder());
+        $filename = RequestHelper::get($request, $this->polyfill->getRoutePlaceholder());
 
         return $this->polyfill->getContent(explode('-', $filename));
     }

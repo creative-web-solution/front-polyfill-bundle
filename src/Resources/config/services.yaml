@@ -1,0 +1,29 @@
+parameters:
+    cws.polyfill.config_path: /frontend/polyfill/config.yaml
+    cws.polyfill.route_placeholder: polyfill_list
+    cws.polyfill.front_polyfill.class: Cws\Bundle\FrontPolyfillBundle\FrontPolyfill\FrontPolyfill
+    cws.polyfill.finder.class: Cws\Bundle\FrontPolyfillBundle\Finder\Finder
+
+services:
+    cws.polyfill.front_polyfill:
+        class: '%cws.polyfill.front_polyfill.class%'
+        public: true
+        arguments:
+            - '@cws.polyfill.finder'
+            - '%kernel.project_dir%'
+            - '%cws.polyfill.config_path%'
+            - '%cws.polyfill.route_placeholder%'
+
+    cws.polyfill.finder:
+        class: '%cws.polyfill.finder.class%'
+
+    # Alias
+    Cws\Bundle\FrontPolyfillBundle\FrontPolyfill\FrontPolyfill: '@cws.polyfill.front_polyfill'
+    Cws\Bundle\FrontPolyfillBundle\Finder\Finder: '@cws.polyfill.finder'
+
+    Cws\Bundle\FrontPolyfillBundle\FrontPolyfill\FrontPolyfillTwigExtension:
+        arguments:
+            - '@cws.polyfill.front_polyfill'
+            - '@Symfony\Component\HttpFoundation\RequestStack'
+        tags:
+            - { name: twig.extension }

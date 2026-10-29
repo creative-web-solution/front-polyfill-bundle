@@ -21,7 +21,7 @@ Add this line in the import section of your __services.yaml__
 
 ```
 imports:
-    - { resource: '@CwsFrontPolyfillBundle/Resources/config/services.xml' }
+    - { resource: '@CwsFrontPolyfillBundle/Resources/config/services.yaml' }
 ```
 
 ## Javascript support tests
